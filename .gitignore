@@ -1,0 +1,9 @@
+# ignore these directories
+node_modules
+out
+build
+.settings
+
+# ignore these files 
+.project
+
