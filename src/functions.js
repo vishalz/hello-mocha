@@ -1,30 +1,35 @@
 
 module.exports = function(){
 
-var test = "test";
+  // incremento
+	let incremento = function (x){
+	
+    //Several ways to specify what type is used to throw the error
+	 
+    if (typeof(x) !== 'number'){
+      let err = "x is not a number";            //  throw a string
+      throw (err);
+	  }
+
+    if (isNaN(x)){
+      let err = new Error('x is a NaN');        // throw an error object using new
+      throw (err);
+    }
+
+	  if (!isFinite(x)){
+      let err = Object.create(Error.prototype); //  throw an error object using Object.create
+      err.message = "x is not Finite";
+      throw (err);
+    }
+
+	  ++x;
+	  return x;
+	
+	}//end of incremento
 
 
-var isNumber = function(number){
-  
-  if (typeof(x) !== 'number'){
-	  console.log( "in isNumber throwing error");
-    //throw and exception and return 
-		throw ( { name : "Invalid Parameter Value" , message : "x is not a number" });
-    //throw ( new Error("test"));
-
-  } else {
-    return true;
-  }  
-
-  }// end of isNumber
-
-
-  var obj = {};
-  
-	obj.isNumber = isNumber;
-  obj.test = test;
-  
-	return obj;
-
+  let obj = {};
+  (typeof(incremento) !== 'undefined') && (obj.incremento = incremento);
+  return obj;
 
 }(); //end of module.exports 
